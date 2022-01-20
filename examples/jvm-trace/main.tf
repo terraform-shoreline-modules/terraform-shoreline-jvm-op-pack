@@ -15,7 +15,7 @@ provider "shoreline" {
 
 module "jvm_trace" {
   # Location of the module
-  source = "shoreline/modules/jvm-op-pack//modules/jvm_trace"
+  source = "terraform-shoreline-modules/jvm-op-pack/shoreline//modules/jvm-trace"
 
   # S3 or GCS storage bucket for heap dumps and stack traces
   bucket = "s3://jvm_trace_example_bucket"

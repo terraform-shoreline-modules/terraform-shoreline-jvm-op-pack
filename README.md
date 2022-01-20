@@ -6,7 +6,7 @@ This repository is a collection of Shoreline Op Pack Terraform Modules for Java 
 
 | Module                                                                                                             | Examples                                                                                                            | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [JVM Trace](https://registry.terraform.io/modules/shorelinesoftware/jvm-op-pack/shoreline/latest/submodules/jvm_trace) | [tomcat-to-S3](https://registry.terraform.io/modules/shorelinesoftware/jvm-op-pack/shoreline/latest/examples/jvm_trace) | Remotely pushes JVM debug data when nodes, pods, or containers exceed a defined memory threshold. |
+| [JVM Trace]( https://registry.terraform.io/modules/terraform-shoreline-modules/jvm-op-pack/shoreline/latest/submodules/jvm-trace) | [tomcat-to-S3]( https://registry.terraform.io/modules/terraform-shoreline-modules/jvm-op-pack/shoreline/latest/examples/jvm-trace) | Remotely pushes JVM debug data when nodes, pods, or containers exceed a defined memory threshold. |
 
 ## Additional Resources
 
