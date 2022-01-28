@@ -1,6 +1,6 @@
 # Shoreline JVM Trace Op Pack
 
-This Op Pack monitors JVM resources (nodes/pods/containers). If the monitored Java processes exceed the defined memory limit, data is automatically collected and pushed to remote storage for more thorough investigation.
+The JVM Trace Op Pack monitors JVM resources (nodes/pods/containers). Whenever monitored Java processes exceed the defined memory limit, data is automatically collected and pushed to remote storage for more thorough investigation.
 
 Collected data includes:
 
