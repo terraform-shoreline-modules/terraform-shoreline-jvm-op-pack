@@ -1,6 +1,6 @@
 # Shoreline Terraform JVM Op Packs
 
-This repository contains a collection of [Shoreline Op Packs](#what-are-shoreline-op-packs) for Java Virtual Machine (JVM) remediation and debugging.
+This [Shoreline Op Pack](#what-are-shoreline-op-packs) contains a collection of modules for Java Virtual Machine (JVM) debugging, alerting, and automatic remediation.
 
 ## About Shoreline
 
