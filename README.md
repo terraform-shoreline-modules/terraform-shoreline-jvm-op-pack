@@ -4,7 +4,7 @@ This [Shoreline Op Pack](#what-are-shoreline-op-packs) contains a collection of 
 
 ## About Shoreline
 
-The Shoreline platform provides real-time monitoring and incident automation for cloud operations. Use Shoreline to debug and automate repairs across your entire fleet in seconds with just a few lines of code.
+The Shoreline platform provides real-time monitoring, alerting, and incident automation for cloud operations. Use Shoreline to detect, debug, and automate repairs across your entire fleet in seconds with just a few lines of code.
 
 Shoreline [Agents](https://docs.shoreline.io/platform/agents) are efficient and non-intrusive processes running in the background of all your monitored hosts. [Agents](https://docs.shoreline.io/platform/agents) act as the secure link between Shoreline and your environment's [Resources](https://docs.shoreline.io/platform/resources), providing real-time monitoring and metric collection across your fleet. [Agents](https://docs.shoreline.io/platform/agents) can execute actions on your behalf -- everything from simple Linux commands to full remediation playbooks -- running simultaneously across all the targeted [Resources](https://docs.shoreline.io/platform/resources).
 
