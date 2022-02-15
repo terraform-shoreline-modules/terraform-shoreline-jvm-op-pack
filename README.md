@@ -18,10 +18,28 @@ Shoreline Op Packs are open-source collections of Terraform configurations and s
 
 ## JVM Op Packs
 
-### JVM Trace
+<table role="table" style="vertical-align: middle;">
+  <thead>
+    <tr style="background-color: #D2D2D2">
+      <th style="padding: 6px 13px; border: 1px solid #B1B1B1;">Name</th>
+      <th style="padding: 6px 13px; border: 1px solid #B1B1B1; text-align: center;">AWS</th>
+      <th style="padding: 6px 13px; border: 1px solid #B1B1B1; text-align: center;">Azure</th>
+      <th style="padding: 6px 13px; border: 1px solid #B1B1B1; text-align: center;">GCP</th>
+      <th style="padding: 6px 13px; border: 1px solid #B1B1B1;">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 6px 13px; border: 1px solid #B1B1B1;"><a href="#jvm-trace">JVM Trace</a></td>
+      <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#6CB169"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></td>
+      <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#6CB169"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></td>
+      <td style="vertical-align: bottom; border: 1px solid #B1B1B1; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" style="width: 1.5rem; height: 1.5rem;" fill="none" viewBox="0 0 24 24" stroke="#6CB169"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg></td>
+      <td style="padding: 6px 13px; border: 1px solid #B1B1B1;"><a href="https://registry.terraform.io/modules/terraform-shoreline-modules/jvm-op-pack/shoreline/latest/submodules/jvm-trace" target="_blank" rel="noreferrer">Submodule</a>, <a href="https://registry.terraform.io/modules/terraform-shoreline-modules/jvm-op-pack/shoreline/latest/examples/jvm-trace" target="_blank" rel="noreferrer">Example</a></td>
+    </tr>  
+  </tbody>
+</table>
 
-- **[Submodule](https://registry.terraform.io/modules/terraform-shoreline-modules/jvm-op-pack/shoreline/latest/submodules/jvm-trace)**
-- **[Example](https://registry.terraform.io/modules/terraform-shoreline-modules/jvm-op-pack/shoreline/latest/examples/jvm-trace)**
+### JVM Trace
 
 The [JVM Trace Op Pack](https://registry.terraform.io/modules/terraform-shoreline-modules/jvm-op-pack/shoreline/latest/submodules/jvm-trace) monitors JVM resources (nodes/pods/containers). If the monitored Java processes exceed the defined memory limit, data is automatically collected and pushed to remote storage for more thorough investigation.
 
