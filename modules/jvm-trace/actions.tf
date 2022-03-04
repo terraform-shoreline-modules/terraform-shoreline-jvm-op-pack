@@ -2,7 +2,7 @@
 # Action to report the JVM heap usage on the selected resources and process.
 # Returns MB memory used.
 resource "shoreline_action" "jvm_trace_mem_usage" {
-  name = "${var.op_prefix}_jvm_mem_usage"
+  name = "${var.prefix}jvm_mem_usage"
   description = "Calculate heap utilization by process regex."
   # Parameters passed in: the regular expression to select process name.
   params = [ "JVM_PROCESS_REGEX" ]
@@ -26,7 +26,7 @@ resource "shoreline_action" "jvm_trace_mem_usage" {
 # Action to check the JVM heap usage on the selected resources and process.
 # Prints a message and returns 1, if threshold is exceeded.
 resource "shoreline_action" "jvm_trace_check_heap" {
-  name = "${var.op_prefix}_jvm_check_heap"
+  name = "${var.prefix}jvm_check_heap"
   description = "Check heap utilization by process regex."
   # Parameters passed in: the regular expression to select process name.
   params = [ "JVM_PROCESS_REGEX" ]
@@ -48,7 +48,7 @@ resource "shoreline_action" "jvm_trace_check_heap" {
 
 # Action to dump the JVM stack-trace on the selected resources and process.
 resource "shoreline_action" "jvm_trace_jvm_debug" {
-  name = "${var.op_prefix}_jvm_dump_stack"
+  name = "${var.prefix}jvm_dump_stack"
   description = "Dump JVM process (by regex) heap, thread and GC info to s3, then kill the pod."
   # Parameters passed in: the regular expression to select process name, and destination AWS S3 bucket.
   params = [ "JVM_PROCESS_REGEX" , "BUCKET"]

@@ -1,7 +1,7 @@
 
 # Alarm that triggers when the selected JVM heap usage exceeds the chosen size.
 resource "shoreline_alarm" "jvm_trace_heap_alarm" {
-  name = "${var.op_prefix}_jvm_heap_alarm"
+  name = "${var.prefix}jvm_heap_alarm"
   description = "Alarm on JVM heap usage growing larger than a threshold."
   # The query that triggers the alarm: is the JVM memory usage greater than a threshold.
   fire_query  = "${shoreline_action.jvm_trace_check_heap.name}('${var.jvm_process_regex}') == 1"

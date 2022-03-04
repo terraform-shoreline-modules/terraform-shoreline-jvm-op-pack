@@ -29,8 +29,8 @@ module "jvm_trace" {
   # Maximum memory usage, in Mb, before the JVM process is traced
   mem_threshold = 1000
 
-  # Namespace to allow multiple instances of the module, with different params
-  op_prefix = "jvm_example"
+  # Prefix to allow multiple instances of the module, with different params
+  prefix = "jvm_example_"
 
   # Resource query to select the affected resources
   resource_query = "pods | app='jvm-test'"

@@ -1,7 +1,7 @@
 
 # Bot that fires the stack-dump action when the jvm heap exceeds the chosen memory threshold.
 resource "shoreline_bot" "jvm_trace_dump_bot" {
-  name = "${var.op_prefix}_jvm_dump_bot"
+  name = "${var.prefix}jvm_dump_bot"
   description = "Disk utilization handler bot"
   # If the JVM heap usage exceeds the threshold, dump the process stack, and push to AWS S3.
   # NOTE: Use a reference to the action and alarm, to ensure they are created and available before the bot.

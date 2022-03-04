@@ -10,8 +10,8 @@
 #     # Location of the module:
 #     source             = "./"
 #   
-#     # Namespacing to allow multiple instances of the module, with different params:
-#     op_prefix          = "jvm_trace"
+#     # Prefix to allow multiple instances of the module, with different params:
+#     prefix             = "jvm_trace_"
 #   
 #     # Resource query to select the affected resources:
 #     resource_query     = "jvm_pods"

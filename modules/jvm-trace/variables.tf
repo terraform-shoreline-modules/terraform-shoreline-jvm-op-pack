@@ -2,9 +2,9 @@
 #NOTE: The api URL is passed in via the SHORELINE_URL env var.
 #        SHORELINE_TOKEN is also required.
 
-variable "op_prefix" {
+variable "prefix" {
   type        = string
-  description = "A namespace prefix to isolate multiple instances of the module with different parameters."
+  description = "A prefix to isolate multiple instances of the module with different parameters."
 }
 
 variable "resource_query" {

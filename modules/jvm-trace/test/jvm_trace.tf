@@ -9,12 +9,12 @@ terraform {
 }
 
 locals {
-  op_prefix          = "testjvm"
+  prefix             = "testjvm_"
 }
 
 module "jvm_autotrace_eat" {
   source             = "../"
-  op_prefix          = "${local.op_prefix}"
+  prefix          = "${local.prefix}"
   jvm_process_regex  = "EatResources"
   mem_threshold      = 30
   # check more frequently to speed up test
@@ -27,7 +27,7 @@ module "jvm_autotrace_eat" {
 # a second instance of the module watching different processes
 module "jvm_autotrace_gnaw" {
   source             = "../"
-  op_prefix          = "${local.op_prefix}2"
+  prefix          = "${local.prefix}2_"
   jvm_process_regex  = "GnawResources"
   mem_threshold      = 30
   # check more frequently to speed up test
@@ -39,7 +39,7 @@ module "jvm_autotrace_gnaw" {
 
 # Push the source that eats resources
 resource "shoreline_file" "jvm_test_java_src" {
-  name = "${local.op_prefix}_jvm_test_java_src"
+  name = "${local.prefix}jvm_test_java_src"
   description = "Java source to use resources."
   input_file = "${path.module}/EatResources.java"
   destination_path = "/tmp/EatResources.java"
@@ -49,7 +49,7 @@ resource "shoreline_file" "jvm_test_java_src" {
 
 # Push a second source that eats resources
 resource "shoreline_file" "jvm_test2_java_src" {
-  name = "${local.op_prefix}_jvm_test2_java_src"
+  name = "${local.prefix}jvm_test2_java_src"
   description = "Java source (alt) to use resources."
   input_file = "${path.module}/ChewResources.java"
   destination_path = "/tmp/ChewResources.java"
@@ -59,7 +59,7 @@ resource "shoreline_file" "jvm_test2_java_src" {
 
 # Push a third source that eats resources
 resource "shoreline_file" "jvm_test3_java_src" {
-  name = "${local.op_prefix}_jvm_test3_java_src"
+  name = "${local.prefix}jvm_test3_java_src"
   description = "Java source (alt) to use resources."
   input_file = "${path.module}/GnawResources.java"
   destination_path = "/tmp/GnawResources.java"

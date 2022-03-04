@@ -21,7 +21,7 @@ terraform {
 # Example instantiation of the JVM Trace OpPack:
 module "jvm_autotrace_example" {
   source             = "./modules/jvm_trace/"
-  op_prefix          = "jvm_example"
+  prefix             = "jvm_example_"
   jvm_process_regex  = "jvm_test_app"
   mem_threshold      = 30
   check_interval     = 60
