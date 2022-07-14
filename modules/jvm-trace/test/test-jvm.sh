@@ -174,8 +174,8 @@ run_tests() {
   pods=`echo "pod | app='jvm-test' | count" | ${CLI} | grep -A1 'RESOURCE_COUNT' | tail -n1`
 
   # count alarms before we started
-  pre_fired=`get_event_counts | cut -d '|' -f 3`
-  pre_cleared=`get_event_counts | cut -d '|' -f 4`
+  pre_fired=`get_event_counts | cut -d '|' -f 7`
+  pre_cleared=`get_event_counts | cut -d '|' -f 8`
   #pre_total=`get_event_counts | cut -d '|' -f 5`
 
   # dynamically wait for the java file to propagate
@@ -200,7 +200,7 @@ run_tests() {
   echo "Asking extra jvm pod to consume memory..."
   echo "pod | app='jvm-test' | \`echo 1000 > /tmp/chew-mem.txt\`" | ${CLI}
   sleep 20
-  mid_fired=`get_event_counts | cut -d '|' -f 3`
+  mid_fired=`get_event_counts | cut -d '|' -f 7`
   get_event_counts
   if [ "${mid_fired}" != "${pre_fired}" ]; then
     echo -n -e "${RED}"
@@ -217,13 +217,13 @@ run_tests() {
 
   echo "waiting for jvm alarm to fire ..."
   # verify that the alarm fired:
-  post_fired=`get_event_counts | cut -d '|' -f 3`
+  post_fired=`get_event_counts | cut -d '|' -f 7`
   get_event_counts
   used=0
   while [ "${post_fired}" == "${pre_fired}" ]; do
     echo "  waiting..."
     sleep ${PAUSE_TIME}
-    post_fired=`get_event_counts | cut -d '|' -f 3`
+    post_fired=`get_event_counts | cut -d '|' -f 7`
     # timeout after maximum wait and fail
     used=$(( ${used} + ${PAUSE_TIME} ))
     if [ ${used} -gt ${MAX_WAIT} ]; then
@@ -233,12 +233,12 @@ run_tests() {
   get_event_counts
 
   echo "waiting for jvm alarm to clear ..."
-  post_cleared=`get_event_counts | cut -d '|' -f 4`
+  post_cleared=`get_event_counts | cut -d '|' -f 8`
   used=0
   while [ "${post_cleared}" == "${pre_cleared}" ]; do
     echo "  waiting..."
     sleep ${PAUSE_TIME}
-    post_cleared=`get_event_counts | cut -d '|' -f 4`
+    post_cleared=`get_event_counts | cut -d '|' -f 8`
     # timeout after maximum wait and fail
     used=$(( ${used} + ${PAUSE_TIME} ))
     if [ ${used} -gt ${MAX_WAIT} ]; then
@@ -259,13 +259,13 @@ run_tests() {
   echo "pod | app='jvm-test' | \`echo 1000 > /tmp/gnaw-mem.txt\`" | ${CLI}
   echo "waiting for second jvm alarm to fire ..."
   # verify that the alarm fired:
-  second_fired=`get_event_counts | cut -d '|' -f 3`
+  second_fired=`get_event_counts | cut -d '|' -f 7`
   get_event_counts
   used=0
   while [ "${post_fired}" == "${second_fired}" ]; do
     echo "  waiting..."
     sleep ${PAUSE_TIME}
-    post_fired=`get_event_counts | cut -d '|' -f 3`
+    post_fired=`get_event_counts | cut -d '|' -f 7`
     # timeout after maximum wait and fail
     used=$(( ${used} + ${PAUSE_TIME} ))
     if [ ${used} -gt ${MAX_WAIT} ]; then
@@ -282,12 +282,12 @@ run_tests() {
   fi
 
   echo "waiting for second jvm alarm to clear ..."
-  second_cleared=`get_event_counts | cut -d '|' -f 4`
+  second_cleared=`get_event_counts | cut -d '|' -f 8`
   used=0
   while [ "${post_cleared}" == "${second_cleared}" ]; do
     echo "  waiting..."
     sleep ${PAUSE_TIME}
-    post_cleared=`get_event_counts | cut -d '|' -f 4`
+    post_cleared=`get_event_counts | cut -d '|' -f 8`
     # timeout after maximum wait and fail
     used=$(( ${used} + ${PAUSE_TIME} ))
     if [ ${used} -gt ${MAX_WAIT} ]; then

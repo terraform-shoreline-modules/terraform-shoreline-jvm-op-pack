@@ -1,0 +1,126 @@
+{
+  "cells": [
+    {
+      "content": "# Setup\nInstall required packages and configure pods for testing.",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "## Setup Kubernetes\nSetup kubernetes objects for the test.",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | app =~ \"shoreline\" | limit=1 | `kubectl apply -f  \"/tmp/jvm_test.yaml\"`",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "If you ran into permission problem, run the apply command (kubectl apply -f \"/tmp/jvm_test.yaml\") with a user having sufficient permission. Content of the k8s manifest file:",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | app =~ \"shoreline\" | limit=1 | `cat  \"/tmp/jvm_test.yaml\"`",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "Verify that jvm-test pods have been created.",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | app = \"jvm-test\"",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "# JVM Trace",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "## Check Memory Usage\n\n",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "Start JVM process",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pod | app='jvm-test' | `cd /tmp; javac EatResources.java && java EatResources &`",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "pod | app='jvm-test' | `echo 1000 > /tmp/eat-mem.txt`",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "### Calculate heap utilization\nCalculate heap utilization by process regex",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | app='jvm-test' | testjvm_jvm_mem_usage('EatResources')",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "### Check heap utilization\nCheck heap utilization by process regex and return 1 if above threshold",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | app='jvm-test' | testjvm_jvm_check_heap('EatResources')",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "## List JVM Alarms",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "events | alarm_name =~ 'jvm'",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "## Data Collection\nDump JVM process (by regex) heap, thread and GC info to s3, then kill the pod.",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | app='jvm-test' | testjvm_jvm_dump_stack('EatResources', 's3://shore-oppack-test/')",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    }
+  ],
+  "enabled": true,
+  "params": []
+}
