@@ -67,4 +67,12 @@ resource "shoreline_file" "jvm_test3_java_src" {
   enabled = true
 }
 
+resource "shoreline_file" "jvm_test_yaml" {
+  name = "${local.prefix}jvm_test_yaml"
+  description = "k8s yaml config to create test pod."
+  input_file = "${path.module}/jvm_test.yaml"
+  destination_path = "/tmp/jvm_test.yaml"
+  resource_query = "pods | app='shoreline'"
+  enabled = true
+}
 
