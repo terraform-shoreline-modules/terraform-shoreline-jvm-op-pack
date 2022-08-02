@@ -19,7 +19,7 @@
       "type": "OP_LANG"
     },
     {
-      "content": "If you ran into permission problem, run the apply command (kubectl apply -f \"/tmp/jvm_test.yaml\") with a user having sufficient permission. Content of the k8s manifest file:",
+      "content": "If you ran into permission problem, run the apply command (`kubectl apply -f \"jvm_test.yaml\"`) with a user having sufficient permission. Content of the k8s manifest file can be seen with the `cat` command below. It might take a while for the files to propagate.",
       "enabled": false,
       "name": "unnamed",
       "type": "MARKDOWN"
@@ -38,6 +38,18 @@
     },
     {
       "content": "pods | app = \"jvm-test\"",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "Verify that test java file have been propagated.",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pod | app='jvm-test' | limit=1 | `ls /tmp/ | grep \"EatResources.java\"`",
       "enabled": false,
       "name": "unnamed",
       "type": "OP_LANG"
@@ -67,13 +79,31 @@
       "type": "OP_LANG"
     },
     {
+      "content": "### Calculate heap utilization\nCalculate heap utilization by process regex",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
+      "content": "pods | app='jvm-test' | testjvm_jvm_mem_usage('EatResources')",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "OP_LANG"
+    },
+    {
+      "content": "Asking jvm pod to consume memory.",
+      "enabled": false,
+      "name": "unnamed",
+      "type": "MARKDOWN"
+    },
+    {
       "content": "pod | app='jvm-test' | `echo 1000 > /tmp/eat-mem.txt`",
       "enabled": false,
       "name": "unnamed",
       "type": "OP_LANG"
     },
     {
-      "content": "### Calculate heap utilization\nCalculate heap utilization by process regex",
+      "content": "Check heap utilization after process is consuming memory.",
       "enabled": false,
       "name": "unnamed",
       "type": "MARKDOWN"
@@ -97,7 +127,7 @@
       "type": "OP_LANG"
     },
     {
-      "content": "## List JVM Alarms",
+      "content": "## List JVM Alarms\n\nList the JVM alarms triggered \n\nNote: Wait for check_interval before running and/or retry if nothing shows up at first.",
       "enabled": false,
       "name": "unnamed",
       "type": "MARKDOWN"
@@ -109,7 +139,7 @@
       "type": "OP_LANG"
     },
     {
-      "content": "## Data Collection\nDump JVM process (by regex) heap, thread and GC info to s3, then kill the pod.",
+      "content": "## Data Collection\nDump JVM process (by regex) heap, thread and GC info to s3 bucket (https://s3.console.aws.amazon.com/s3/buckets/shore-oppack-test).",
       "enabled": false,
       "name": "unnamed",
       "type": "MARKDOWN"
