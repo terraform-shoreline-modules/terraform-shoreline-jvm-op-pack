@@ -34,7 +34,7 @@ spec:
           imagePullPolicy: IfNotPresent
           resources:
               requests:
-                memory: 100Mi
+                memory: 350Mi
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: 
           command: ["/bin/sh"]

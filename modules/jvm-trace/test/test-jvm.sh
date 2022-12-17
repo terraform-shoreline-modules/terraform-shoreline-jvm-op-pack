@@ -198,7 +198,7 @@ run_tests() {
   echo "pod | app='jvm-test' | \`cd /tmp; javac GnawResources.java && java GnawResources &\`" | ${CLI}
  
   echo "Asking extra jvm pod to consume memory..."
-  echo "pod | app='jvm-test' | \`echo 1000 > /tmp/chew-mem.txt\`" | ${CLI}
+  echo "pod | app='jvm-test' | \`echo 100 > /tmp/chew-mem.txt\`" | ${CLI}
   sleep 20
   mid_fired=`get_event_counts | cut -d '|' -f 7`
   get_event_counts
@@ -213,7 +213,7 @@ run_tests() {
   fi
 
   echo "Asking jvm pods to consume memory..."
-  echo "pod | app='jvm-test' | \`echo 1000 > /tmp/eat-mem.txt\`" | ${CLI}
+  echo "pod | app='jvm-test' | \`echo 100 > /tmp/eat-mem.txt\`" | ${CLI}
 
   echo "waiting for jvm alarm to fire ..."
   # verify that the alarm fired:
@@ -256,7 +256,7 @@ run_tests() {
   fi
 
   echo "Asking third jvm pods to consume memory..."
-  echo "pod | app='jvm-test' | \`echo 1000 > /tmp/gnaw-mem.txt\`" | ${CLI}
+  echo "pod | app='jvm-test' | \`echo 100 > /tmp/gnaw-mem.txt\`" | ${CLI}
   echo "waiting for second jvm alarm to fire ..."
   # verify that the alarm fired:
   second_fired=`get_event_counts | cut -d '|' -f 7`
